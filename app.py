@@ -2,9 +2,8 @@ import pandas as pd
 import requests
 import streamlit as st
 
-# Configuration for Live Cloud Backend or Localhost Fallback
-# Change this to your Render URL when deploying live
-API_BASE_URL = "http://127.0.0.1:8000"
+# Live Cloud Backend Configuration
+API_BASE_URL = "https://govspot-backend.onrender.com"
 
 st.set_page_config(
     page_title="Govspot | Executive Command Center",
@@ -76,7 +75,9 @@ with st.sidebar:
 
   st.markdown("---")
   st.markdown("### 🏛️ System Status")
-  st.info("Govspot DPI Rails: Connected\nSQLAlchemy Engine: Active")
+  st.info(
+      "Govspot DPI Rails: Live\nCloud Backend: Render\nSQLAlchemy Engine: Active"
+  )
 
 # --- MAIN DASHBOARD ---
 st.title("🛡️ GOVSPOT: Autonomous Command Center")
@@ -212,8 +213,8 @@ try:
       with tab3:
         st.subheader("🔌 DPI Interoperability & Gateway Telemetry")
         st.json({
-            "fastapi_gateway": "ONLINE",
-            "database_connector": "SQLAlchemy 2.0 (Relational State)",
+            "fastapi_gateway": "ONLINE (Render)",
+            "database_connector": "SQLAlchemy (Persistent State)",
             "encryption_standard": "AES-256 Public Sector Grade",
         })
     else:
@@ -224,4 +225,4 @@ try:
   else:
     st.error("Connection error with backend service.")
 except Exception as e:
-  st.warning(f"⚠️ Make sure FastAPI backend is running. Details: {e}")
+  st.warning(f"⚠️ Could not reach backend. Details: {e}")

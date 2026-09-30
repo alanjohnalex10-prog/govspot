@@ -3,8 +3,8 @@ import requests
 import streamlit as st
 from streamlit_folium import st_folium
 
-# Configuration for Live Cloud Backend or Localhost Fallback
-API_BASE_URL = "http://127.0.0.1:8000"
+# Live Cloud Backend Configuration
+API_BASE_URL = "https://govspot-backend.onrender.com"
 
 st.set_page_config(
     page_title="Govspot | Public Reporting Portal",
@@ -111,7 +111,7 @@ with st.form("citizen_report_form"):
         else:
           st.error("Failed to connect to backend service.")
       except Exception:
-        st.error("⚠️ Backend offline. Make sure FastAPI is running.")
+        st.error("⚠️ Backend connection error. Please try again.")
 
 st.markdown("---")
 st.markdown(
